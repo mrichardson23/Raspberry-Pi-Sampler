@@ -8,7 +8,7 @@ GPIO.setup(7, GPIO.IN)
 GPIO.setup(8, GPIO.IN)
 GPIO.setup(9, GPIO.IN)
 
-print "Sampler Ready."
+print("Sampler Ready.")
 
 while True:
 	try:

@@ -1,7 +1,7 @@
 import pygame.mixer
-from time import *
+from time import sleep
 import RPi.GPIO as GPIO
-import sys
+from sys import exit
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(7, GPIO.IN)
@@ -9,28 +9,25 @@ GPIO.setup(8, GPIO.IN)
 GPIO.setup(9, GPIO.IN)
 
 pygame.mixer.init(48000, -16, 1, 1024)
-pygame.init()
 
 soundA = pygame.mixer.Sound("/usr/share/sounds/alsa/Front_Center.wav")
 soundB = pygame.mixer.Sound("/usr/share/sounds/alsa/Front_Left.wav")
 soundC = pygame.mixer.Sound("/usr/share/sounds/alsa/Front_Right.wav")
 
-soundChannel = pygame.mixer.Channel(1)
+soundChannelA = pygame.mixer.Channel(1)
+soundChannelB = pygame.mixer.Channel(2)
+soundChannelC = pygame.mixer.Channel(3)
 
 print "Sampler Ready."
+
 while True:
 	try:
 		if (GPIO.input(7) == True):
-			soundChannel.play(soundA)
-			sleep(soundA.get_length())
+			soundChannelA.play(soundA)
 		if (GPIO.input(8) == True):
-			soundB.play()
-			sleep(soundB.get_length())
-			soundB.stop()
+			soundChannelB.play(soundB)
 		if (GPIO.input(9) == True):
-			soundC.play()
-			sleep(soundC.get_length())
-			soundC.stop()
+			soundChannelC.play(soundC)
 		sleep(.01)
 	except KeyboardInterrupt:
-		sys.exit()
+		exit()

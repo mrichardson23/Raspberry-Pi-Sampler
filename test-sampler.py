@@ -2,12 +2,12 @@ import pygame.mixer
 from time import *
 import sys
 
-pygame.mixer.init(48000, -8,2,15000)
+pygame.mixer.init(48000, -16, 2, 1024)
 pygame.init()
 
-soundA = pygame.mixer.Sound("/usr/share/sounds/KDE-Im-Cant-Connect.ogg")
-soundB = pygame.mixer.Sound("/usr/share/sounds/KDE-Im-Message-In.ogg")
-soundC = pygame.mixer.Sound("/usr/share/sounds/KDE-Im-Message-Out.ogg")
+soundA = pygame.mixer.Sound("/usr/share/sounds/alsa/Front_Center.wav")
+soundB = pygame.mixer.Sound("/usr/share/sounds/alsa/Front_Left.wav")
+soundC = pygame.mixer.Sound("/usr/share/sounds/alsa/Front_Right.wav")
 
 print "Sampler Ready."
 
